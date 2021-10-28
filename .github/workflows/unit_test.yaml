@@ -18,10 +18,21 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "13.x"
+      - name: restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            .packages
+          key: ${{ runner.os }}-${{ hashFiles('pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('pubspec.lock') }}
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: "2.5.0"
       - name: flutter pub get
         run: flutter pub get
       - name: flutter test
-        run: flutter test
+        run: flutter test --machine > test.json
+      - uses: ueki-tomohiro/flutter-result-tool@main
+        with:
+          inputPath: test.json
+        if: success() || failure()
