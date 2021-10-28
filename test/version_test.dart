@@ -24,6 +24,6 @@ void main() {
   test('version 3.0.100', () {
     expect(
         Version("3.0.100").toString(),
-        equals("3.0.100"));
+        equals("3.0.100A"));
   });
 }
