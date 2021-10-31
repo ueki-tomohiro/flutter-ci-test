@@ -1,4 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ci_test/model/counseling.dart';
+import 'package:flutter_ci_test/widget/list_item.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+final counseling = Counseling(
+  date: DateTime.parse("2021-11-10T11:30:00+09:00"),
+  id: 1,
+  patient: Patient(
+    id: 1,
+    name: "患者太郎",
+    birthday: DateTime.parse("2000-11-01T11:00:00+09:00"),
+  ),
+  requestedDate: DateTime.parse("2021-11-10T11:00:00+09:00"),
+);
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +26,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -102,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ListItem(counseling),
           ],
         ),
       ),

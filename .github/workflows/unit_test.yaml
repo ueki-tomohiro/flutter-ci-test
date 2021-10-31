@@ -32,7 +32,11 @@ jobs:
         run: flutter pub get
       - name: flutter test
         run: flutter test --machine > test.json
-      - uses: ueki-tomohiro/flutter-result-tool@main
+      - name: flutter coverage
+        run: flutter test --coverage
+        if: success() || failure()
+      - uses: ueki-tomohiro/flutter-result-tool@v1
         with:
-          inputPath: test.json
+          machinePath: test.json
+          coveragePath: coverage/lcov.info
         if: success() || failure()
