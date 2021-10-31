@@ -35,7 +35,7 @@ jobs:
       - name: flutter coverage
         run: flutter test --coverage
         if: success() || failure()
-      - uses: ueki-tomohiro/flutter-result-tool@v1
+      - uses: ueki-tomohiro/flutter-test-action@v1
         with:
           machinePath: test.json
           coveragePath: coverage/lcov.info
