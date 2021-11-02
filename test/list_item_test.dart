@@ -39,7 +39,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('患者太郎'), findsOneWidget);
-      expect(find.text('相談・2000/11/1生まれ・20歳'), findsOneWidget);
+      expect(find.text('相談・2000/11/1生まれ・21歳'), findsOneWidget);
 
       await tester.tap(find.byIcon(Icons.print));
       await tester.pump();
