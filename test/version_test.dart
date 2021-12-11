@@ -26,4 +26,10 @@ void main() {
         Version("3.0.100").toString(),
         equals("3.0.100"));
   });
+
+  test('version 1.0.0.1', () {
+    expect(
+        Version("1.0.0.1").toString(),
+        equals("1.0.0.1"));
+  });
 }
